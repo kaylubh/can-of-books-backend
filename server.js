@@ -5,7 +5,9 @@ const express = require('express');
 const cors = require('cors');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/books');
+mongoose.connect(process.env.DATABASE_URL);
+
+const Book = require('./models/book');
 
 const app = express();
 app.use(cors());
