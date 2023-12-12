@@ -29,8 +29,8 @@ Books are life-changing. They have the power to enlighten, educate, entertain, h
 
     Estimate of time needed to complete: 30 mins
     Start time: 5:17pm PT
-    Finish time:
-    Actual time needed to complete:
+    Finish time: 6:02pm PT
+    Actual time needed to complete: 45 mins
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
