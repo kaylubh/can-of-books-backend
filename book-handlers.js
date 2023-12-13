@@ -14,4 +14,18 @@ async function getBooks(request, response) {
   response.json(books);
 }
 
-module.exports = getBooks;
+
+async function createBook(request, response) {
+  try {
+    const newBook = await Book.create(request.body);
+    response.status(201).send(newBook);
+
+  } catch (error) {
+    response.status(500).send('Error creating book');
+
+  }
+
+}
+module.exports = {getBooks, createBook};
+
+
