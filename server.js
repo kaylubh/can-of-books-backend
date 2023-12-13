@@ -1,17 +1,17 @@
-'use strict';
-
+// dependencies
 require('dotenv').config();
-const express = require('express');
 const cors = require('cors');
-
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL);
-
-const Book = require('./models/book');
-
+// express
+const express = require('express');
 const app = express();
-
+// port
 const PORT = process.env.PORT || 3005;
+// modules
+const getBooks = require('./book-handlers');
+
+// database
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI);
 
 // middleware
 app.use(cors());
@@ -21,16 +21,6 @@ app.get('/test', (request, response) => {
   response.send('test request received');
 });
 app.get('/books', getBooks);
-
-// handlers
-async function getBooks(request, response) {
-
-  const filterQuery = {};
-
-  const books = await Book.find(filterQuery);
-
-  response.json(books);
-}
 
 // start
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
