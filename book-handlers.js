@@ -44,8 +44,8 @@ async function updateBook(request, response) {
   const id = request.params.id;
 
   try {
-    const updatedBook = await Book.findByIdAndUpdate(id, request.body);
-    response.status(200).send(updatedBook);
+    await Book.findByIdAndUpdate(id, request.body);
+    response.status(200).send(`Successfully updated book with ID: ${id}`);
   } catch (error) {
     console.error(error);
     response.status(500).send(error.message);
