@@ -26,6 +26,19 @@ async function createBook(request, response) {
   }
 
 }
-module.exports = {getBooks, createBook};
+
+async function deleteBook(request, response) {
+  const id = request.params.id;
+
+  try {
+    await Book.findByIdAndDelete(id);
+    response.status(204).send('success');
+  } catch (error) {
+    console.error(error);
+    response.status(404).send(`Unable to delete book with id ${id}`);
+  }
+
+}
+module.exports = {getBooks, createBook, deleteBook};
 
 

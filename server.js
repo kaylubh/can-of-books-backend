@@ -7,7 +7,7 @@ const app = express();
 // port
 const PORT = process.env.PORT || 3005;
 // modules
-const {getBooks, createBook} = require('./book-handlers');
+const {getBooks, createBook, deleteBook} = require('./book-handlers');
 // database
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
@@ -33,7 +33,7 @@ app.get('/test', (request, response) => {
 
 app.get('/books', getBooks);
 app.post('/books', createBook);
-
+app.delete('/books/:id', deleteBook);
 
 
 
