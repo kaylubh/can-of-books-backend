@@ -39,6 +39,17 @@ async function deleteBook(request, response) {
   }
 
 }
-module.exports = {getBooks, createBook, deleteBook};
 
+async function updateBook(request, response) {
+  const id = request.params.id;
 
+  try {
+    const updatedBook = await Book.findByIdAndUpdate(id, request.body);
+    response.status(200).send(updatedBook);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send(error.message);
+  }
+}
+
+module.exports = {getBooks, createBook, deleteBook, updateBook};
