@@ -7,36 +7,24 @@ const app = express();
 // port
 const PORT = process.env.PORT || 3005;
 // modules
-const {getBooks, createBook, deleteBook} = require('./book-handlers');
+const {getBooks, createBook, deleteBook, updateBook} = require('./book-handlers');
+
 // database
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
-
-
-
-
-
 
 // middleware
 app.use(cors());
 app.use(express.json());
 
-
-
 // routes
 app.get('/test', (request, response) => {
   response.send('test request received');
 });
-
-
-
-
 app.get('/books', getBooks);
 app.post('/books', createBook);
 app.delete('/books/:id', deleteBook);
-
-
-
+app.put('/books/:id', updateBook);
 
 // start
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
